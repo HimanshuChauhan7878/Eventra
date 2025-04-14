@@ -106,9 +106,11 @@ const Profile = () => {
           {/* Header */}
           <div className="bg-gradient-to-r from-teal-500 to-blue-600 px-6 py-8">
             <div className="flex items-center">
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center">
-                <User className="w-10 h-10 text-teal-500" />
-              </div>
+              <img
+                src="https://images.unsplash.com/photo-1612832021043-8b1e6f4c1d6b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                alt="Profile"
+                className="w-20 h-20 object-cover rounded-full"
+              />
               <div className="ml-6">
                 <h1 className="text-2xl font-bold text-white">{user.name}</h1>
                 <p className="text-teal-100">{user.email}</p>
@@ -244,6 +246,15 @@ const Profile = () => {
                 )}
               </div>
             </form>
+
+            <div className="mt-8">
+              <h2 className="text-lg font-semibold text-slate-900 mb-4">Upcoming Events</h2>
+              <ul className="list-disc list-inside text-slate-700">
+                <li>Event 1: Mock Event A - Date: 2025-04-20</li>
+                <li>Event 2: Mock Event B - Date: 2025-05-10</li>
+                <li>Event 3: Mock Event C - Date: 2025-06-05</li>
+              </ul>
+            </div>
 
             <div className="mt-8 pt-8 border-t border-slate-200">
               <button

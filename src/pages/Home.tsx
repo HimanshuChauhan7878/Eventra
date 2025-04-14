@@ -16,6 +16,7 @@ interface Event {
   registered: number;
   image: string;
   club: string;
+  externalRegistrationLink?: string;
 }
 
 const Home = () => {
@@ -86,8 +87,23 @@ const Home = () => {
             category: 'Cultural',
             capacity: 1000,
             registered: 800,
-            image: 'https://images.unsplash.com/photo-1511795409834-432f31197ce6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+            image: 'https://images.unsplash.com/photo-1556742044-3c52d6e88c62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
             club: 'Cultural Society'
+          },
+          {
+            id: '4',
+            title: 'Summer of Codefest\'25',
+            description: 'Join us for an exciting coding festival featuring hackathons, workshops, and coding competitions. Connect with fellow developers and industry experts.',
+            date: '2025-06-15',
+            time: '9:00 AM',
+            venue: 'Computer Science Building',
+            location: 'Main Campus',
+            category: 'Academic',
+            capacity: 300,
+            registered: 0,
+            image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80',
+            club: 'Coding Club',
+            externalRegistrationLink: 'https://unstop.com/p/summer-of-codefest-vit-bhopal-university-vit-bhopal-1460303'
           }
         ];
 
@@ -117,12 +133,19 @@ const Home = () => {
   const fadeIn = `transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`;
 
   const handleRegister = (eventId: string) => {
+    const event = events.find(e => e.id === eventId);
+    
+    if (event?.externalRegistrationLink) {
+        window.open(event.externalRegistrationLink, '_blank');
+        return;
+    }
+
     const auth = getAuth();
     const user = auth.currentUser;
 
     if (!user) {
-      alert('Please log in to register for events.');
-      return;
+        alert('Please log in to register for events.');
+        return;
     }
 
     navigate(`/register/${eventId}`);
