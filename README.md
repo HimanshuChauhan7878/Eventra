@@ -122,9 +122,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [Firebase](https://firebase.google.com/)
 - [MongoDB](https://www.mongodb.com/)
 - [Express.js](https://expressjs.com/)
-
-## Contact
-
-Your Name - [@yourtwitter](https://twitter.com/yourtwitter)
-
-Project Link: [https://github.com/yourusername/eventra](https://github.com/yourusername/eventra) 
