@@ -161,12 +161,21 @@ const EventRegistration = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
+    // Validate form fields
+    if (!formData.name || !formData.email || !formData.phone) {
+      setError('Please fill in all required fields');
+      return;
+    }
+
     try {
       if (!isAuthenticated) {
         setError('Please log in to register for events');
         navigate('/auth');
         return;
       }
+
+      // Clear previous error
+      setError('');
 
       // Get current registrations
       const userRegistrations = JSON.parse(localStorage.getItem('userRegistrations') || '[]');
@@ -202,6 +211,14 @@ const EventRegistration = () => {
       // Show success message
       setSuccessMessage(`You have successfully registered for ${event?.title}! Your vibe score has increased by 1!`);
       setShowSuccessPopup(true);
+
+      // Clear form after successful submission
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+      });
+
     } catch (error) {
       setError('Failed to register for event. Please try again.');
     }
